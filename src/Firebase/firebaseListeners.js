@@ -1,5 +1,5 @@
 import { onSnapshot, collection } from 'firebase/firestore'
-import {db} from './firebase'
+import { db } from './firebase'
 
 export const listenForProductsChanges = (callback) => {
   const productsRef = collection(db, 'products')
@@ -13,7 +13,10 @@ export const listenForProductsChanges = (callback) => {
 export const listenForCustomersChanges = (callback) => {
   const customersRef = collection(db, 'customers')
   const unsubscribe = onSnapshot(customersRef, (snapshot) => {
-    const customers = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+    const customers = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }))
     callback(customers)
   })
   return unsubscribe
@@ -22,7 +25,10 @@ export const listenForCustomersChanges = (callback) => {
 export const listenForPurchasesChanges = (callback) => {
   const purchasesRef = collection(db, 'purchases')
   const unsubscribe = onSnapshot(purchasesRef, (snapshot) => {
-    const purchases = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+    const purchases = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }))
     callback(purchases)
   })
   return unsubscribe

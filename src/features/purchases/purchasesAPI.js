@@ -57,7 +57,7 @@ export const getPurchasesOfProductAPI = async (productId) => {
   }
 }
 
-//get the products the customer bought & purchase date
+//get the products bought by the customer & purchase date
 export const getPurchasesOfCustomerAPI = async (customerId) => {
   try {
     const purchases = await getPurchasesByCustomerIdAPI(customerId)
@@ -76,24 +76,19 @@ export const getPurchasesOfCustomerAPI = async (customerId) => {
     })
     return purchasesWithDate
   } catch (err) {
-    console.error('Error getting purchases of customer ${customerId}:', err)
+    console.error(`Error getting purchases of customer ${customerId}:`, err)
     return []
   }
 }
 
-//*?need date in the async parameters? */
 //add product to customer
 export const addPurchaseToCustomerAPI = async (productId, customerId) => {
-  console.log('addPurchaseToCustomerAPI called with', { productId, customerId })
   try {
-    const docRef = await addDoc(collection(db, 'purchases'), {
+    await addDoc(collection(db, 'purchases'), {
       customerId,
       productId,
       date: serverTimestamp(),
     })
-    console.log(
-      `Product ${productId} bought by customer ${customerId} - purchase ID: ${docRef.id}`
-    )
   } catch (err) {
     console.error(
       `Error adding product ${productId} to customer ${customerId}`,

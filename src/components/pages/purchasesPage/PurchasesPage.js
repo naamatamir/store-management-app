@@ -16,11 +16,11 @@ const PurchasesPage = () => {
   const purchases = useSelector(selectPurchases)
 
   const products = useSelector(selectProducts)
-  const allProducts = { id: -1, name: 'All Products' }
+  // const allProducts = { id: -1, name: 'All Products' }
   const productsWithAll = [{ id: -1, name: 'All Products' }, ...products]
 
   const customers = useSelector(selectCustomers)
-  const allCustomers = { id: -1, firstName: 'All', lastName: 'Customers' }
+  // const allCustomers = { id: -1, firstName: 'All', lastName: 'Customers' }
   const customersWithAll = [
     { id: -1, firstName: 'All', lastName: 'Customers' },
     ...customers,
