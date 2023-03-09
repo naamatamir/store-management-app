@@ -1,16 +1,16 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { selectPurchases } from '../../../features/purchases/purchasesSlice'
-import { selectProducts } from '../../../features/products/productsSlice'
-import { selectCustomers } from '../../../features/customers/customersSlice'
-import NavBar from '../../shared/NavBar'
-import PageHeader from '../../shared/PageHeader'
-import Button from '../../shared/Button'
+import { selectPurchases } from '../../features/purchases/purchasesSlice'
+import { selectProducts } from '../../features/products/productsSlice'
+import { selectCustomers } from '../../features/customers/customersSlice'
+import NavBar from '../../components/shared/NavBar'
+import PageHeader from '../../components/shared/PageHeader'
+import Button from '../../components/shared/Button'
 import SearchIcon from '@mui/icons-material/Search'
 import './purchasesStyles.css'
 import Autocomplete from '@mui/material/Autocomplete'
 import TextField from '@mui/material/TextField'
-import DatePicker from '../../DatePicker'
+import DatePicker from '../../components/DatePicker'
 
 const PurchasesPage = () => {
   const purchases = useSelector(selectPurchases)
@@ -28,7 +28,7 @@ const PurchasesPage = () => {
 
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [selectedCustomer, setSelectedCustomer] = useState(null)
-  // const [selectedDate, setSelectedDate] = useState(new Date())
+  const [selectedDate, setSelectedDate] = useState(null)
   const [filteredPurchases, setFilteredPurchases] = useState([])
 
   const handleProductSelect = (event, value) => {
@@ -40,7 +40,7 @@ const PurchasesPage = () => {
   }
 
   const handleDateSelect = (date) => {
-    // setSelectedDate(date)
+    setSelectedDate(date)
   }
 
   const filterPurchases = () => {
@@ -58,13 +58,20 @@ const PurchasesPage = () => {
       )
     }
 
-    // if (selectedDate !== null) {
-    //   const selectedDateStr = selectedDate.toISOString().slice(0, 10)
+    // if (selectedDate instanceof Date) {
+    //   const selectedDateStr = selectedDate.toLocaleDateString('en-GB')
     //   filteredPurchases = filteredPurchases.filter(
-    //     (purchase) =>
-    //       new Date(purchase.date).toISOString().slice(0, 10) === selectedDateStr
+    //     (purchase) => purchase.date === selectedDateStr
     //   )
+    //   console.log("🚀 ~ file: PurchasesPage.js:66 ~ filterPurchases ~ filteredPurchases:", filteredPurchases)
     // }
+
+    if (selectedDate instanceof Date) {
+      filteredPurchases = filteredPurchases.filter(
+        (purchase) => new Date(purchase.date).toLocaleDateString('en-GB') === selectedDate.toLocaleDateString('en-GB')
+      )
+      console.log("🚀 ~ file: PurchasesPage.js:72 ~ filterPurchases ~ filteredPurchases:", filteredPurchases)
+    }
 
     return filteredPurchases.map((purchase) => {
       const product = products.find(
@@ -122,37 +129,39 @@ const PurchasesPage = () => {
           )}
         />
         <br />
-        <DatePicker />
+        <DatePicker handleDateSelect={handleDateSelect} />
         <br />
         <Button startIcon={<SearchIcon />} onClick={handleSearch}>
           Search
         </Button>
         <br />
-        <table className='purchases-table-wrapper'>
-          <thead>
-            <tr>
-              <th>Product</th>
-              <th>Customer</th>
-              <th>Purchase Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredPurchases.map((purchase) => (
-              <tr key={purchase.id}>
-                <td>{purchase.productName}</td>
-                <td>{purchase.customerName}</td>
-                <td>
-                  {purchase.date &&
-                    new Date(purchase.date).toLocaleDateString('en-GB', {
-                      day: 'numeric',
-                      month: 'numeric',
-                      year: 'numeric',
-                    })}
-                </td>
+        {filteredPurchases.length > 0 && (
+          <table className='purchases-table-wrapper'>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Customer</th>
+                <th>Purchase Date</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {filteredPurchases.map((purchase) => (
+                <tr key={purchase.id}>
+                  <td>{purchase.productName}</td>
+                  <td>{purchase.customerName}</td>
+                  <td>
+                    {purchase.date &&
+                      new Date(purchase.date).toLocaleDateString('en-GB', {
+                        day: 'numeric',
+                        month: 'numeric',
+                        year: 'numeric',
+                      })}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </>
   )

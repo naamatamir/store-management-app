@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useLocation } from 'react-router-dom'
-import { getPurchasesOfProduct } from '../../../features/purchases/purchasesThunks'
-import { selectPurchasesOfProduct } from '../../../features/purchases/purchasesSlice'
-import NavBar from '../../shared/NavBar'
-import ProductForm from '../../ProductForm'
-import PageHeader from '../../shared/PageHeader'
+import { getPurchasesOfProduct } from '../../features/purchases/purchasesThunks'
+import { selectPurchasesOfProduct } from '../../features/purchases/purchasesSlice'
+import NavBar from '../../components/shared/NavBar'
+import ProductForm from '../../components/ProductForm'
+import PageHeader from '../../components/shared/PageHeader'
 
 const EditProductPage = () => {
   const dispatch = useDispatch()

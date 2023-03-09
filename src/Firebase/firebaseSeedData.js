@@ -1,3 +1,4 @@
+//firebase-seed-data.json
 {
     "products": [
       {

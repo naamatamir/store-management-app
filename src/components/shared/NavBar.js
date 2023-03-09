@@ -26,7 +26,7 @@ const NavBar = () => {
   }
 
   return (
-    <AppBar position='static' sx={{ backgroundColor: '#2031ac' }}>
+    <AppBar position='static' sx={{ backgroundColor: '#1a237e' }}>
       <Container maxWidth='xl'>
         <Toolbar disableGutters>
           <StorefrontIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />

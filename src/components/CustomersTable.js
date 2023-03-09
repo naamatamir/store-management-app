@@ -12,11 +12,15 @@ import { useSelector } from 'react-redux'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
+    backgroundColor: 'white',
+    color: theme.palette.primary.main,
+    fontWeight: 'bold',
+    fontSize: '1.1rem',
+    maxWidth: '50px',
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
+    maxWidth: '50px',
   },
 }))
 
@@ -56,8 +60,8 @@ const CustomersTable = () => {
 
 export default CustomersTable
 
-
-      {/* <TableBody>
+{
+  /* <TableBody>
           {rows.map((row) => (
             <StyledTableRow key={row.name}>
               <StyledTableCell component='th' scope='row'>
@@ -68,4 +72,5 @@ export default CustomersTable
               <StyledTableCell align='left'>{row.add}</StyledTableCell>
             </StyledTableRow>
           ))}
-        </TableBody> */}
+        </TableBody> */
+}

@@ -1,4 +1,4 @@
-import { db } from '../../Firebase/firebase'
+import { db } from '../../Firebase/firebaseConfig'
 import {
   collection,
   getDocs,
@@ -13,7 +13,7 @@ import { getCustomerByIdAPI } from '../customers/customersAPI'
 import {
   getPurchasesByProductIdAPI,
   getPurchasesByCustomerIdAPI,
-} from './helperAPI'
+} from './purchasesHelperAPI'
 
 //get all purchases
 export const getPurchasesAPI = async () => {

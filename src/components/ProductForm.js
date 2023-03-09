@@ -116,7 +116,7 @@ const ProductForm = ({ product, purchasesOfProduct }) => {
           },
         }}>
         <Button onClick={handleUpdate}>Update</Button>
-        <Button sx={{ palette: 'error' }} onClick={handleDelete}>
+        <Button sx={{ color: 'error.main' }} onClick={handleDelete}>
           Delete
         </Button>
       </Box>

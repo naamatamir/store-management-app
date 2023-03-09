@@ -1,6 +1,6 @@
-import NavBar from '../shared/NavBar'
-import PageHeader from '../shared/PageHeader'
-import CustomersTable from '../CustomersTable'
+import NavBar from '../components/shared/NavBar'
+import PageHeader from '../components/shared/PageHeader'
+import CustomersTable from '../components/CustomersTable'
 const CustomersPage = () => {
   return (
     <div

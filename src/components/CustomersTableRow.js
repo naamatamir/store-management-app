@@ -20,6 +20,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }))
 
+
 const CustomersTableRow = ({ customer }) => {
   const [selectedCustomerId, setSelectedCustomerId] = useState(null)
   // const [openFormId, setOpenFormId] = useState(null)
@@ -75,12 +76,14 @@ const CustomersTableRow = ({ customer }) => {
         {purchasesOfCustomer.length > 0 ? (
           <ul>
             {purchasesOfCustomer.map((product) => (
-              <li key={product.id}>{product.date &&
-                new Date(product.date).toLocaleDateString('en-GB', {
-                  day: 'numeric',
-                  month: 'numeric',
-                  year: 'numeric',
-                })}</li>
+              <li key={product.id}>
+                {product.date &&
+                  new Date(product.date).toLocaleDateString('en-GB', {
+                    day: 'numeric',
+                    month: 'numeric',
+                    year: 'numeric',
+                  })}
+              </li>
             ))}
           </ul>
         ) : (
