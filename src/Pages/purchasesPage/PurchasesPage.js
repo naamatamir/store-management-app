@@ -68,9 +68,14 @@ const PurchasesPage = () => {
 
     if (selectedDate instanceof Date) {
       filteredPurchases = filteredPurchases.filter(
-        (purchase) => new Date(purchase.date).toLocaleDateString('en-GB') === selectedDate.toLocaleDateString('en-GB')
+        (purchase) =>
+          new Date(purchase.date).toLocaleDateString('en-GB') ===
+          selectedDate.toLocaleDateString('en-GB')
       )
-      console.log("🚀 ~ file: PurchasesPage.js:72 ~ filterPurchases ~ filteredPurchases:", filteredPurchases)
+      console.log(
+        '🚀 ~ file: PurchasesPage.js:72 ~ filterPurchases ~ filteredPurchases:',
+        filteredPurchases
+      )
     }
 
     return filteredPurchases.map((purchase) => {
