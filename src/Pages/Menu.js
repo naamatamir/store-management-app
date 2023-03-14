@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import Button from '../shared/Button'
+import Button from '../components/shared/Button'
 import { Box } from '@mui/material'
 import InventoryIcon from '@mui/icons-material/Inventory'
 import PeopleIcon from '@mui/icons-material/People'

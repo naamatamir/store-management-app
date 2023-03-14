@@ -60,7 +60,7 @@ export const purchasesSlice = createSlice({
     })
 
     builder.addCase(addPurchaseToCustomer.fulfilled, (state, action) => {
-      console.log('addPurchaseToCustomer.fulfilled called with', action.payload)
+      console.log('addPurchaseToCustomer.fulfilled')
       state.purchases.push(action.payload)
       state.status = 'succeeded'
     })

@@ -1,9 +1,9 @@
-import Menu from '../components/pages/Menu'
-import ProductsPage from '../components/pages/productsPage/ProductsPage'
-import EditProductPage from '../components/pages/EditProductPage/EditProductPage'
-import CustomersPage from '../components/pages/CustomersPage'
-import EditCustomerPage from '../components/pages/EditCustomerPage/EditCustomerPage'
-import PurchasesPage from '../components/pages/purchasesPage/PurchasesPage'
+import Menu from '../Pages/Menu'
+import ProductsPage from '../Pages/productsPage/ProductsPage'
+import EditProductPage from '../Pages/EditProductPage/EditProductPage'
+import CustomersPage from '../Pages/CustomersPage'
+import EditCustomerPage from '../Pages/EditCustomerPage/EditCustomerPage'
+import PurchasesPage from '../Pages/purchasesPage/PurchasesPage'
 // import WithSpinnerOnLoad from '../hoc/WithSpinnerOnLoad'
 
 // wrap the components with the HOC

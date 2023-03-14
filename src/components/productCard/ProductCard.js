@@ -87,7 +87,7 @@ const ProductCard = ({ product }) => {
                     )}
                     {selectedCustomerId === customer.id &&
                       openFormId === customer.id && (
-                        <AddProductForm customerId={selectedCustomerId} />
+                        <AddProductForm customerId={selectedCustomerId} product={product} />
                       )}
                   </>
                 }

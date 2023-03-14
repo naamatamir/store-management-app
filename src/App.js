@@ -4,9 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import routes from './routes/routes'
 import { getProducts } from './features/products/productsThunks'
 import { getCustomers } from './features/customers/customersThunks'
-import {
-  getPurchases
-} from './features/purchases/purchasesThunks'
+import { getPurchases } from './features/purchases/purchasesThunks'
 import {
   listenForProductsChanges,
   listenForCustomersChanges,
@@ -46,14 +44,6 @@ const App = () => {
       }
     })
   }, [dispatch])
-
-  // useEffect(() => {
-  //   console.log('here we go again')
-  // dispatch(getProductById())
-  // dispatch(getCustomerById())
-  // dispatch(getPurchasesOfProduct())
-  // dispatch(getProductsOfCustomer())
-  // }, [dispatch])
 
   return (
     <ThemeProvider theme={theme}>

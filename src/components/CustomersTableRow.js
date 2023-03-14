@@ -6,7 +6,6 @@ import { getPurchasesOfCustomer } from '../features/purchases/purchasesThunks'
 import { Link } from 'react-router-dom'
 import AddProductForm from './AddProductForm'
 import Button from './shared/Button'
-// import Toasts from './shared/Toasts'
 import { styled } from '@mui/material/styles'
 import TableRow from '@mui/material/TableRow'
 import TableCell from '@mui/material/TableCell'
@@ -20,6 +19,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }))
+
 
 const CustomersTableRow = ({ customer }) => {
   const [selectedCustomerId, setSelectedCustomerId] = useState(null)
@@ -76,12 +76,14 @@ const CustomersTableRow = ({ customer }) => {
         {purchasesOfCustomer.length > 0 ? (
           <ul>
             {purchasesOfCustomer.map((product) => (
-              <li key={product.id}>{product.date &&
-                new Date(product.date).toLocaleDateString('en-GB', {
-                  day: 'numeric',
-                  month: 'numeric',
-                  year: 'numeric',
-                })}</li>
+              <li key={product.id}>
+                {product.date &&
+                  new Date(product.date).toLocaleDateString('en-GB', {
+                    day: 'numeric',
+                    month: 'numeric',
+                    year: 'numeric',
+                  })}
+              </li>
             ))}
           </ul>
         ) : (

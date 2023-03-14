@@ -1,4 +1,4 @@
-import { db } from '../../Firebase/firebase'
+import { db } from '../../Firebase/firebaseConfig'
 import { collection, getDocs, doc, setDoc, deleteDoc } from 'firebase/firestore'
 
 export const getCustomersAPI = async () => {

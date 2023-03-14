@@ -1,8 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import {
   getPurchasesAPI,
-  getPurchasesByProductIdAPI,
-  getPurchasesByCustomerIdAPI,
   getPurchasesOfProductAPI,
   getPurchasesOfCustomerAPI,
   addPurchaseToCustomerAPI,
@@ -37,7 +35,6 @@ export const getPurchasesOfCustomer = createAsyncThunk(
 export const addPurchaseToCustomer = createAsyncThunk(
   'purchases/addPurchaseToCustomer',
   async ({ productId, customerId }) => {
-    console.log('addPurchaseToCustomer called with', { productId, customerId })
     try {
       await addPurchaseToCustomerAPI(productId, customerId)
     } catch (err) {
@@ -63,20 +60,3 @@ export const deletePurchasesOfCustomer = createAsyncThunk(
     await deletePurchasesOfCustomerAPI(customerId)
   }
 )
-
-
-// export const getPurchasesByProductId = createAsyncThunk(
-//   'purchases/getPurchasesByProductId',
-//   async (id) => {
-//     const purchase = await getPurchasesByProductIdAPI(id)
-//     return purchase
-//   }
-// )
-
-// export const getPurchasesByCustomerId = createAsyncThunk(
-//   'purchases/getPurchasesByCustomerId',
-//   async (id) => {
-//     const purchase = await getPurchasesByCustomerIdAPI(id)
-//     return purchase
-//   }
-// )

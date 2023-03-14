@@ -1,61 +1,75 @@
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { selectProducts } from '../features/products/productsSlice'
 import { useDispatch } from 'react-redux'
-import  ProductsComboBox  from './ProductsComboBox'
-import { addPurchaseToCustomer } from '../features/purchases/purchasesThunks'
+import {
+  getPurchases,
+  addPurchaseToCustomer,
+} from '../features/purchases/purchasesThunks'
+import { Autocomplete } from '@mui/material'
+import TextField from '@mui/material/TextField'
 import Button from './shared/Button'
+import Toasts from './shared/Toasts'
+import { showToast } from '../features/toasts/toastsSlice'
 
 const AddProductForm = ({ customerId }) => {
-  const [selectedOption, setSelectedOption] = useState(null)
+  const products = useSelector(selectProducts)
+
+  const [selectedProduct, setSelectedProduct] = useState(null)
+
+  const handleProductSelect = (e, value) => {
+    setSelectedProduct(value)
+  }
 
   const dispatch = useDispatch()
-  const productId = selectedOption?.value
-  console.log("🚀 ~ file: AddProductForm.js:12 ~ AddProductForm ~ productId:", productId)
-  
-  // const handleSubmit = (e) => {
-  //   console.log('handleSubmit function called')
-  //   e.preventDefault()
-  //   console.log('product added from AddProductForm')
-  //   dispatch(addPurchaseToCustomer({ productId, customerId })).then(
-  //     (action) => {
-  //       console.log('Action dispatched:', action)
-  //       console.log('After dispatch')
-  //     }
-  //   )
-  // }
 
-  const handleSubmit = async (e) => {
-    console.log('handleSubmit function called')
+  const productId = selectedProduct?.id
+
+  const handleAddProduct = async (e) => {
     e.preventDefault()
-    console.log('product added from AddProductForm')
     try {
-      const action = dispatch(addPurchaseToCustomer({ productId, customerId }))
-      console.log('Action dispatched:', action)
-      console.log('After dispatch')
+      dispatch(addPurchaseToCustomer({ productId, customerId }))
+      dispatch(
+        showToast({ message: 'Product added to customer', type: 'success' })
+      )
+      setSelectedProduct(null)
+      dispatch(getPurchases)
+      setTimeout(() => {
+        window.location.reload()
+      }, 3000)
     } catch (err) {
-      console.error('Error dispatching addPurchaseToCustomer:', err)
+      dispatch(
+        showToast({
+          message: 'Failed to add product to customer',
+          type: 'error',
+        })
+      )
     }
   }
-  
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex' }}>
-      <Button style={{ flex: 1 }} type='submit'>
-        Add
-      </Button>
-      <ProductsComboBox
-        selectedOption={selectedOption}
-        setSelectedOption={setSelectedOption}
-        style={{ flex: 1 }}
-        // onChange={setProductId}
-      />
-    </form>
+    <>
+      <form style={{ display: 'flex' }}>
+        <Button style={{ flex: 1 }} type='submit' onClick={handleAddProduct}>
+          Add
+        </Button>
+        <Autocomplete
+          disablePortal
+          id='product-select'
+          options={products}
+          getOptionLabel={(option) => option.name}
+          sx={{ width: 250 }}
+          value={selectedProduct}
+          onChange={handleProductSelect}
+          isOptionEqualToValue={(option, value) => option.id === value.id}
+          renderInput={(params) => (
+            <TextField {...params} label='Select Product' />
+          )}
+        />
+      </form>
+      <Toasts />
+    </>
   )
 }
 
 export default AddProductForm
-
-
-  // const handleSelectChange = (option) => {
-  //   console.log("🚀 ~ file: AddProductForm.js:14 ~ handleSelectChange ~ option:", option)
-  //   setSelectedOption(option)
-  // }

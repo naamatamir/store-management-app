@@ -1,4 +1,4 @@
-import { db } from '../../Firebase/firebase'
+import { db } from '../../Firebase/firebaseConfig'
 import { collection, getDocs, doc, setDoc, deleteDoc } from 'firebase/firestore'
 
 export const getProductsAPI = async () => {
@@ -30,7 +30,6 @@ export const getProductByIdAPI = async (id) => {
   }
 }
 
-
 export const updateProductAPI = async (id, productData) => {
   try {
     const docRef = doc(db, 'products', id)
@@ -42,7 +41,7 @@ export const updateProductAPI = async (id, productData) => {
   }
 }
 
-export const deleteProductAPI = async ({id}) => {
+export const deleteProductAPI = async ({ id }) => {
   try {
     // console.log("Before deleteDoc:", id);
     const docRef = doc(db, 'products', id)

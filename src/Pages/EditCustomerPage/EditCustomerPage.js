@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useLocation } from 'react-router-dom'
-import { getPurchasesOfCustomer } from '../../../features/purchases/purchasesThunks'
-import { selectPurchasesOfCustomer } from '../../../features/purchases/purchasesSlice'
-import NavBar from '../../shared/NavBar'
-import CustomerForm from '../../CustomerForm'
-import PageHeader from '../../shared/PageHeader'
+import { getPurchasesOfCustomer } from '../../features/purchases/purchasesThunks'
+import { selectPurchasesOfCustomer } from '../../features/purchases/purchasesSlice'
+import NavBar from '../../components/shared/NavBar'
+import CustomerForm from '../../components/CustomerForm'
+import PageHeader from '../../components/shared/PageHeader'
 import './EditCustomerPageStyles.css'
 
 const EditCustomerPage = () => {
