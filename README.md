@@ -10,7 +10,8 @@
 
 ## Live Preview
 
-This app keeps track of products inventory, customers information and purchases data, 
+This app keeps track of products inventory, 
+customers information and purchases data, 
 and allows you to search, create, update, and delete these items as needed.
 
 ## Built with
