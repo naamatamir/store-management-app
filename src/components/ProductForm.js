@@ -11,8 +11,7 @@ import Toasts from './shared/Toasts'
 import Box from '@mui/material/Box'
 import TextField from './shared/TextField'
 import Button from './shared/Button'
-import Typography from '@mui/material/Typography'
-// import PinnedSubheaderList from './shared/ListMUI'
+import PinnedSubheaderList from './shared/List'
 
 const ProductForm = ({ product, purchasesOfProduct }) => {
   const dispatch = useDispatch()
@@ -77,7 +76,7 @@ const ProductForm = ({ product, purchasesOfProduct }) => {
           justifyContent: 'center',
           marginBottom: '10px',
           '& > :not(style)': { m: 1, width: '25ch' },
-          '@media (max-width: 599px)': {
+          '@media (max-width: 768px)': {
             flexDirection: 'column',
             alignItems: 'center',
           },
@@ -110,40 +109,24 @@ const ProductForm = ({ product, purchasesOfProduct }) => {
           flexDirection: 'row',
           justifyContent: 'center',
           '& > :not(style)': { mt: 1, mb: 1, mr: 1.5, ml: 1.5, width: '25ch' },
-          '@media (max-width: 599px)': {
+          '@media (max-width: 768px)': {
             flexDirection: 'column',
             alignItems: 'center',
           },
         }}>
-        <Button onClick={handleUpdate}>Update</Button>
-        <Button sx={{ color: 'error.main' }} onClick={handleDelete}>
+        <Button size='large' onClick={handleUpdate}>
+          Update
+        </Button>
+        <Button color='error' size='large' onClick={handleDelete}>
           Delete
         </Button>
       </Box>
-      <div
-        className='customers-of-product-container'
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          margin: '10px auto',
-        }}>
-        <Typography variant='h5'>Purchased By:</Typography>
-        <ul>
-          {purchasesOfProduct ? (
-            purchasesOfProduct.map((customer) => (
-              <li key={customer.id}>
-                <Link to='#' onClick={(e) => handleCustomerClick(e, customer)}>
-                  {customer.firstName} {customer.lastName}
-                </Link>
-              </li>
-            ))
-          ) : (
-            <p>No customers found</p>
-          )}
-        </ul>
-        {/* <PinnedSubheaderList /> */}
-      </div>
+      <br />
+      <PinnedSubheaderList
+        purchasesOfProduct={purchasesOfProduct}
+        handleCustomerClick={handleCustomerClick}
+      />
+      <br />
       <Toasts navigate={navigate} path='/products' />
     </>
   )

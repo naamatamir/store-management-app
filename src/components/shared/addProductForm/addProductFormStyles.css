@@ -1,0 +1,12 @@
+.MuiInputBase-root {
+  /* height: 15px; */
+ 
+}
+
+
+.MuiOutlinedInput-root.MuiInputBase-adornedEnd.MuiAutocomplete-inputRoot {
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 36.5px;
+
+}

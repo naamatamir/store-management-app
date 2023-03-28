@@ -6,13 +6,13 @@ import { selectPurchasesOfProduct } from '../../features/purchases/purchasesSlic
 import NavBar from '../../components/shared/NavBar'
 import ProductForm from '../../components/ProductForm'
 import PageHeader from '../../components/shared/PageHeader'
+import './EditPageStyles.css'
 
 const EditProductPage = () => {
   const dispatch = useDispatch()
   const { id } = useParams()
   const location = useLocation()
   const { product } = location.state || {}
-  // console.log(location.state?.product);
 
   useEffect(() => {
     dispatch(getPurchasesOfProduct(id))
@@ -25,7 +25,9 @@ const EditProductPage = () => {
     <>
       <NavBar />
       <PageHeader title='PRODUCT PAGE' />
-      <div className='edit-form-wrapper' style={{ backgroundColor: 'white' }}>
+      <div className='edit-form-wrapper'
+        // style={{ backgroundColor: 'white' }}
+      >
         <ProductForm
           product={product}
           purchasesOfProduct={purchasesOfProduct}

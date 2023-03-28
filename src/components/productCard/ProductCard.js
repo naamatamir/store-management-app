@@ -5,7 +5,7 @@ import { selectPurchasesOfProduct } from '../../features/purchases/purchasesSlic
 import { getPurchasesOfProduct } from '../../features/purchases/purchasesThunks'
 import Card from '../shared/Card'
 import Button from '../shared/Button'
-import AddProductForm from '../AddProductForm'
+import AddProductForm from '../shared/addProductForm/AddProductForm'
 import Toasts from '../shared/Toasts'
 import './productCard.styles.css'
 
@@ -67,9 +67,9 @@ const ProductCard = ({ product }) => {
                   pathname: `/customers/${customer.id}/edit`,
                   state: { customer },
                 }}
-                variant='h6'
+                // variant='h6'
                 title={`${customer.firstName} ${customer.lastName}`}
-                label1='Purchase Date: '
+                label1='Purchased: '
                 value1={
                   customer.date &&
                   new Date(customer.date).toLocaleDateString('en-GB', {
@@ -87,7 +87,10 @@ const ProductCard = ({ product }) => {
                     )}
                     {selectedCustomerId === customer.id &&
                       openFormId === customer.id && (
-                        <AddProductForm customerId={selectedCustomerId} product={product} />
+                        <AddProductForm
+                          customerId={selectedCustomerId}
+                          product={product}
+                        />
                       )}
                   </>
                 }

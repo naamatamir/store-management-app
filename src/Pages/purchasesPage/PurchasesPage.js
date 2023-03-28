@@ -11,6 +11,38 @@ import './purchasesStyles.css'
 import Autocomplete from '@mui/material/Autocomplete'
 import TextField from '@mui/material/TextField'
 import DatePicker from '../../components/DatePicker'
+import TableCell, { tableCellClasses } from '@mui/material/TableCell'
+import { styled } from '@mui/material/styles'
+import TableContainer from '@mui/material/TableContainer'
+import Paper from '@mui/material/Paper'
+import TableRow from '@mui/material/TableRow'
+import TableHead from '@mui/material/TableHead'
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: '#f5f5f5',
+    color: theme.palette.primary.main,
+    fontWeight: 'bold',
+    fontSize: '1.1rem',
+    maxWidth: '50px',
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+    maxWidth: '50px',
+  },
+}))
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(even)': {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+}))
 
 const PurchasesPage = () => {
   const purchases = useSelector(selectPurchases)
@@ -140,7 +172,7 @@ const PurchasesPage = () => {
           Search
         </Button>
         <br />
-        {filteredPurchases.length > 0 && (
+        {/* {filteredPurchases.length > 0 && (
           <table className='purchases-table-wrapper'>
             <thead>
               <tr>
@@ -166,6 +198,38 @@ const PurchasesPage = () => {
               ))}
             </tbody>
           </table>
+        )} */}
+
+        {filteredPurchases.length > 0 && (
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 700 }} aria-label='customized table'>
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell align='center'>Product</StyledTableCell>
+                  <StyledTableCell align='center'>Customer</StyledTableCell>
+                  <StyledTableCell align='center'>
+                    Purchase Date
+                  </StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {filteredPurchases.map((purchase) => (
+                  <StyledTableRow key={purchase.id}>
+                    <StyledTableCell>{purchase.productName}</StyledTableCell>
+                    <StyledTableCell>{purchase.customerName}</StyledTableCell>
+                    <StyledTableCell>
+                      {purchase.date &&
+                        new Date(purchase.date).toLocaleDateString('en-GB', {
+                          day: 'numeric',
+                          month: 'numeric',
+                          year: 'numeric',
+                        })}
+                    </StyledTableCell>
+                  </StyledTableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
         )}
       </div>
     </>

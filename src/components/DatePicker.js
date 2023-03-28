@@ -16,7 +16,7 @@ const DatePicker = ({handleDateSelect}) => {
   dayjs.locale('en-gb')
 
   const datePicker = isMobile ? (
-    <MobileDatePicker
+    <MobileDatePicker 
       label='Select Date'
       value={value}
       onChange={(newValue) => {
@@ -27,6 +27,7 @@ const DatePicker = ({handleDateSelect}) => {
       renderInput={(params) => (
         <TextField
           {...params}
+          style={{width: 250}}
           value={
             value instanceof Date
               ? value.toLocaleDateString('en-GB', {
@@ -52,6 +53,7 @@ const DatePicker = ({handleDateSelect}) => {
       renderInput={(params) => (
         <TextField
           {...params}
+          style={{width: 250}}
           value={
             value instanceof Date
               ? value.toLocaleDateString('en-GB', {

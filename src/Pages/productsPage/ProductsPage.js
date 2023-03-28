@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import { selectPurchases } from '../../features/purchases/purchasesSlice'
 import NavBar from '../../components/shared/NavBar'
-import { ProductsList } from '../../features/products/ProductsList'
+import { ProductsList } from '../../features/products/productsList/ProductsList'
 import PageHeader from '../../components/shared/PageHeader'
 import Typography from '@mui/material/Typography'
 import './productsPageStyles.css'

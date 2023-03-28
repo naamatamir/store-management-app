@@ -76,7 +76,7 @@ const CustomerForm = ({ customer, purchasesOfCustomer }) => {
           justifyContent: 'center',
           marginBottom: '10px',
           '& > :not(style)': { m: 1, width: '25ch' },
-          '@media (max-width: 599px)': {
+          '@media (max-width: 768px)': {
             flexDirection: 'column',
             alignItems: 'center',
           },
@@ -109,13 +109,13 @@ const CustomerForm = ({ customer, purchasesOfCustomer }) => {
           flexDirection: 'row',
           justifyContent: 'center',
           '& > :not(style)': { mt: 1, mb: 1, mr: 1.5, ml: 1.5, width: '25ch' },
-          '@media (max-width: 599px)': {
+          '@media (max-width: 768px)': {
             flexDirection: 'column',
             alignItems: 'center',
           },
         }}>
-        <Button onClick={handleUpdate}>Update</Button>
-        <Button color='error' onClick={handleDelete}>
+        <Button size='large' onClick={handleUpdate}>Update</Button>
+        <Button color='error' size='large' onClick={handleDelete}>
           Delete
         </Button>
       </Box>
@@ -147,3 +147,5 @@ const CustomerForm = ({ customer, purchasesOfCustomer }) => {
 }
 
 export default CustomerForm
+
+

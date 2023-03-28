@@ -8,8 +8,9 @@ const PageHeader = ({ title }) => (
         fontFamily: 'monospace',
         fontWeight: 700,
         textAlign: 'center',
+        fontSize: '2.1rem',
         '@media (max-width: 599px)': {
-          fontSize: '1.8rem',
+          fontSize: '1.7rem',
         },
       }}>
       {title}

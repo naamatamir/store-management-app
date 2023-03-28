@@ -8,7 +8,7 @@
   min-width: 370px;
 }
 
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 1330px) {
   .purchases-counter-wrapper {
     width: 30%;
     max-width: none;

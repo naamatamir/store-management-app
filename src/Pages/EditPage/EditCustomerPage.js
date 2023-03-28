@@ -6,14 +6,13 @@ import { selectPurchasesOfCustomer } from '../../features/purchases/purchasesSli
 import NavBar from '../../components/shared/NavBar'
 import CustomerForm from '../../components/CustomerForm'
 import PageHeader from '../../components/shared/PageHeader'
-import './EditCustomerPageStyles.css'
+import './EditPageStyles.css'
 
 const EditCustomerPage = () => {
   const dispatch = useDispatch()
   const { id } = useParams()
   const location = useLocation()
   const { customer } = location.state || {}
-  // console.log(location.state?.customer)
 
   useEffect(() => {
     dispatch(getPurchasesOfCustomer(id))
@@ -26,11 +25,13 @@ const EditCustomerPage = () => {
     <>
       <NavBar />
       <PageHeader title='CUSTOMER PAGE' />
-      <div className='edit-form-wrapper' style={{ backgroundColor: 'white' }}>
-      <CustomerForm
-        customer={customer}
-        purchasesOfCustomer={purchasesOfCustomer}
-      />
+      <div className='edit-form-wrapper'
+        // style={{ backgroundColor: 'white' }}
+      >
+        <CustomerForm
+          customer={customer}
+          purchasesOfCustomer={purchasesOfCustomer}
+        />
       </div>
     </>
   )

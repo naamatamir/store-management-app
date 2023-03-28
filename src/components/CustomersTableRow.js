@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectPurchasesOfCustomer } from '../features/purchases/purchasesSlice'
 import { getPurchasesOfCustomer } from '../features/purchases/purchasesThunks'
 import { Link } from 'react-router-dom'
-import AddProductForm from './AddProductForm'
+import AddProductForm from './shared/addProductForm/AddProductForm'
 import Button from './shared/Button'
 import { styled } from '@mui/material/styles'
 import TableRow from '@mui/material/TableRow'
@@ -19,7 +19,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }))
-
 
 const CustomersTableRow = ({ customer }) => {
   const [selectedCustomerId, setSelectedCustomerId] = useState(null)
