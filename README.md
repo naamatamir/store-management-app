@@ -10,8 +10,6 @@
 
 ## Live Preview
 
-*Insert link to demo
-
 This app keeps track of products inventory, customers information and purchases data, 
 and allows you to search, create, update, and delete these items as needed.
 
