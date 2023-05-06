@@ -10,17 +10,16 @@
 
 ## Live Preview
 
-*Insert link to demo
-
 This app keeps track of products inventory, customers information and purchases data, 
 and allows you to search, create, update, and delete these items as needed.
 
 ## Built with
-- React JS  
-- Redux Toolkit
-- Firebase 
-- React-router
-- MUI
+- [React JS](https://react.dev/) 
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [Firebase](https://firebase.google.com/) 
+- [React-router](https://reactrouter.com/en/main)
+- [MUI](https://mui.com/)
+
 
 
 ## Installation
@@ -35,7 +34,7 @@ and allows you to search, create, update, and delete these items as needed.
 ```
 npm install
 ```
-3. Add .env file with your firebase config ??
+3. Add .env file with your firebase config
 
 4. Run the app
 ```
