@@ -25,9 +25,7 @@ const EditCustomerPage = () => {
     <>
       <NavBar />
       <PageHeader title='CUSTOMER PAGE' />
-      <div className='edit-form-wrapper'
-        // style={{ backgroundColor: 'white' }}
-      >
+      <div className='edit-form-wrapper'>
         <CustomerForm
           customer={customer}
           purchasesOfCustomer={purchasesOfCustomer}

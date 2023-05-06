@@ -8,9 +8,13 @@ export const ProductsList = () => {
 
   return (
     <div className='product-container'>
-      {products.map((product) => {
-        return <ProductCard key={product.id} product={product} />
-      })}
+      {products.length > 0 ? (
+        products.map((product) => {
+          return <ProductCard key={product.id} product={product} />
+        })
+      ) : (
+        <p>No products found</p>
+      )}
     </div>
   )
 }

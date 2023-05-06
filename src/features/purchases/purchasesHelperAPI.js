@@ -15,8 +15,6 @@ export const getPurchasesByProductIdAPI = async (productId = '') => {
   } catch (err) {
     console.error('Error getting purchases by product ID:', err)
     return []
-    //**or? */
-    // throw error
   }
 }
 
@@ -34,7 +32,5 @@ export const getPurchasesByCustomerIdAPI = async (customerId = '') => {
   } catch (error) {
     console.error('Error fetching purchases by customer ID:', error)
     return []
-    //**or? */
-    // throw error
   }
 }

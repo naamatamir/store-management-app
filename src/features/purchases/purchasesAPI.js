@@ -28,8 +28,6 @@ export const getPurchasesAPI = async () => {
   } catch (error) {
     console.error('Error getting purchases:', error)
     throw error
-    //**option instead of throw error: */
-    // return []
   }
 }
 

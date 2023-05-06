@@ -7,7 +7,7 @@ import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import CustomersTableRow from './CustomersTableRow'
-import { selectCustomers } from '../features/customers/customersSlice'
+import { selectCustomers } from '../../../features/customers/customersSlice'
 import { useSelector } from 'react-redux'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -17,25 +17,45 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     fontWeight: 'bold',
     fontSize: '1.1rem',
     maxWidth: '50px',
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-    maxWidth: '50px',
+    textAlign: 'left',
   },
 }))
+
+//** */
+const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
+  // mobile
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: '96%',
+  },
+  // desktop
+  [theme.breakpoints.up('md')]: {
+    maxWidth: '1000px',
+  },
+}))
+//** */
 
 const CustomersTable = () => {
   const customers = useSelector(selectCustomers)
 
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label='customized table'>
+    <StyledTableContainer
+      component={Paper}
+      style={{
+        margin: 'auto',
+        border: '1 solid #ccc',
+        borderRadius: '5',
+        boxShadow: '0 2 8 rgba(0, 0, 0, 0.26)',
+        transition: 'all 0.3s ease-in-out',
+      }}>
+      <Table
+        // sx={{ minWidth: 500 }}
+        aria-label='customized table'>
         <TableHead>
           <TableRow>
-            <StyledTableCell align='center'>Full Name</StyledTableCell>
-            <StyledTableCell align='center'>Purchases</StyledTableCell>
-            <StyledTableCell align='center'>Dates</StyledTableCell>
-            <StyledTableCell align='center'>Add Product</StyledTableCell>
+            <StyledTableCell>Name</StyledTableCell>
+            <StyledTableCell>Purchases</StyledTableCell>
+            <StyledTableCell>Dates</StyledTableCell>
+            <StyledTableCell>Add Product</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -44,23 +64,8 @@ const CustomersTable = () => {
           ))}
         </TableBody>
       </Table>
-    </TableContainer>
+    </StyledTableContainer>
   )
 }
 
 export default CustomersTable
-
-{
-  /* <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.name}>
-              <StyledTableCell component='th' scope='row'>
-                {row.name}
-              </StyledTableCell>
-              <StyledTableCell align='center'>{row.purchases}</StyledTableCell>
-              <StyledTableCell align='center'>{row.dates}</StyledTableCell>
-              <StyledTableCell align='left'>{row.add}</StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody> */
-}

@@ -7,7 +7,6 @@ const TextField = ({ label, name, value, onChange }) => {
       id={id}
       label={label}
       variant='outlined'
-      //*?reaquired */
       InputLabelProps={{ shrink: true, htmlFor: id, required: true }}
       name={name}
       value={value}

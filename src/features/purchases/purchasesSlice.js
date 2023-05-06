@@ -1,8 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import {
   getPurchases,
-  // getPurchasesByProductId,
-  // getPurchasesByCustomerId,
   getPurchasesOfProduct,
   getPurchasesOfCustomer,
   addPurchaseToCustomer,

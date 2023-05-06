@@ -57,10 +57,8 @@ const App = () => {
               return (
                 <Route
                   key={route.path}
-                  // path={route.path}
                   {...route}
                   element={<WrappedComponent />}
-                  // exact={route.exact}
                 />
               )
             })}

@@ -1,17 +1,13 @@
-import * as React from 'react'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
 import ListSubheader from '@mui/material/ListSubheader'
 import Typography from '@mui/material/Typography'
 
-export default function CustomerPurchasesList({
-  purchasesOfProduct,
-  handleCustomerClick,
-}) {
+const SharedList = ({ data, headerText, handleItemClick, context }) => {
   return (
     <List
-      className='purchased-list'
+      className='shared-list'
       sx={{
         width: 215,
         margin: '0 auto',
@@ -31,24 +27,22 @@ export default function CustomerPurchasesList({
         <ListSubheader
           className='list-subheader'
           sx={{ backgroundColor: '#f5f5f5' }}>
-          Purchased by
+          {headerText}
         </ListSubheader>
       }>
-      {purchasesOfProduct && purchasesOfProduct.length > 0 ? (
-        purchasesOfProduct.map((customer) => (
-          <ListItem
-            key={customer.id}
-            sx={{
-              padding: ' 0',
-            }}>
+      {data && data.length > 0 ? (
+        data.map((item) => (
+          <ListItem key={item.id} sx={{ padding: '0' }}>
             <ListItemText
               primary={
                 <Typography
                   component='a'
                   href='#'
-                  onClick={(e) => handleCustomerClick(e, customer)}
+                  onClick={(e) => handleItemClick(e, item)}
                   sx={{ textDecoration: 'underline', color: 'inherit' }}>
-                  {`${customer.firstName} ${customer.lastName}`}
+                  {context === 'customer'
+                    ? `${item.firstName} ${item.lastName}`
+                    : item.name}
                 </Typography>
               }
             />
@@ -56,9 +50,11 @@ export default function CustomerPurchasesList({
         ))
       ) : (
         <ListItem>
-          <ListItemText primary='No purchases for this Product' />
+          <ListItemText primary='No items available' />
         </ListItem>
       )}
     </List>
   )
 }
+
+export default SharedList

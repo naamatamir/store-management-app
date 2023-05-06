@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import {
   updateCustomer,
   deleteCustomer,
@@ -11,7 +11,7 @@ import Toasts from './shared/Toasts'
 import Box from '@mui/material/Box'
 import TextField from './shared/TextField'
 import Button from './shared/Button'
-import Typography from '@mui/material/Typography'
+import SharedList from './shared/SharedList'
 
 const CustomerForm = ({ customer, purchasesOfCustomer }) => {
   const dispatch = useDispatch()
@@ -114,38 +114,24 @@ const CustomerForm = ({ customer, purchasesOfCustomer }) => {
             alignItems: 'center',
           },
         }}>
-        <Button size='large' onClick={handleUpdate}>Update</Button>
+        <Button size='large' onClick={handleUpdate}>
+          Update
+        </Button>
         <Button color='error' size='large' onClick={handleDelete}>
           Delete
         </Button>
       </Box>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          margin: '0 auto',
-        }}>
-        <Typography variant='h5'>Products Purchased:</Typography>
-        <ul>
-          {purchasesOfCustomer ? (
-            purchasesOfCustomer.map((product) => (
-              <li key={product.id}>
-                <Link to='#' onClick={(e) => handleProductClick(e, product)}>
-                  {product.name}
-                </Link>
-              </li>
-            ))
-          ) : (
-            <p>No customers found</p>
-          )}
-        </ul>
-      </div>
+      <br />
+      <SharedList
+        data={purchasesOfCustomer}
+        headerText='Purchased Products'
+        handleItemClick={handleProductClick}
+        context='product'
+      />
+      <br />
       <Toasts navigate={navigate} path='/customers' />
     </>
   )
 }
 
 export default CustomerForm
-
-

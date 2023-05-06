@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-// import { selectPurchases } from '../../features/purchases/purchasesSlice'
 import { selectPurchasesOfProduct } from '../../features/purchases/purchasesSlice'
 import { getPurchasesOfProduct } from '../../features/purchases/purchasesThunks'
 import Card from '../shared/Card'
 import Button from '../shared/Button'
-import AddProductForm from '../shared/addProductForm/AddProductForm'
+import AddProductForm from '../shared/AddProductForm'
 import Toasts from '../shared/Toasts'
 import './productCard.styles.css'
 
@@ -14,8 +13,6 @@ const ProductCard = ({ product }) => {
   const [openFormId, setOpenFormId] = useState(null)
 
   const dispatch = useDispatch()
-
-  // const purchases = useSelector(selectPurchases)
 
   const purchasesOfProduct =
     useSelector((state) => selectPurchasesOfProduct(state, product.id)) || []
@@ -44,7 +41,6 @@ const ProductCard = ({ product }) => {
         value1={`$${product.price}`}
         label2='Quantity: '
         value2={product.quantity}
-        //**better as a separate CustomerCard comp? as outlet?*/
         children={
           purchasesOfProduct.length === 0 ? (
             <p>No purchases found for this product</p>
@@ -56,7 +52,6 @@ const ProductCard = ({ product }) => {
                 style={{
                   textAlign: 'left',
                   backgroundColor: '#f5f5f5',
-                  // border: '1px solid grey',
                   paddingTop: '0.5rem',
                   border: '1px solid #ccc',
                   borderRadius: '5px',
@@ -67,7 +62,6 @@ const ProductCard = ({ product }) => {
                   pathname: `/customers/${customer.id}/edit`,
                   state: { customer },
                 }}
-                // variant='h6'
                 title={`${customer.firstName} ${customer.lastName}`}
                 label1='Purchased: '
                 value1={

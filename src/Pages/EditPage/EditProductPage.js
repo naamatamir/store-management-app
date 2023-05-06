@@ -25,9 +25,7 @@ const EditProductPage = () => {
     <>
       <NavBar />
       <PageHeader title='PRODUCT PAGE' />
-      <div className='edit-form-wrapper'
-        // style={{ backgroundColor: 'white' }}
-      >
+      <div className='edit-form-wrapper'>
         <ProductForm
           product={product}
           purchasesOfProduct={purchasesOfProduct}

@@ -15,8 +15,6 @@ export const getProductsAPI = async () => {
   } catch (error) {
     console.error('Error getting products:', error)
     throw error
-    //**option instead of throw error: */
-    // return []
   }
 }
 
@@ -43,10 +41,8 @@ export const updateProductAPI = async (id, productData) => {
 
 export const deleteProductAPI = async ({ id }) => {
   try {
-    // console.log("Before deleteDoc:", id);
     const docRef = doc(db, 'products', id)
     await deleteDoc(docRef)
-    // console.log("After deleteDoc");
     const products = await getProductsAPI()
     return products
   } catch (error) {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { Link, useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import {
   updateProduct,
   deleteProduct,
@@ -11,7 +11,7 @@ import Toasts from './shared/Toasts'
 import Box from '@mui/material/Box'
 import TextField from './shared/TextField'
 import Button from './shared/Button'
-import PinnedSubheaderList from './shared/List'
+import SharedList from './shared/SharedList'
 
 const ProductForm = ({ product, purchasesOfProduct }) => {
   const dispatch = useDispatch()
@@ -122,9 +122,11 @@ const ProductForm = ({ product, purchasesOfProduct }) => {
         </Button>
       </Box>
       <br />
-      <PinnedSubheaderList
-        purchasesOfProduct={purchasesOfProduct}
-        handleCustomerClick={handleCustomerClick}
+      <SharedList
+        data={purchasesOfProduct}
+        headerText='Purchased by'
+        handleItemClick={handleCustomerClick}
+        context='customer'
       />
       <br />
       <Toasts navigate={navigate} path='/products' />

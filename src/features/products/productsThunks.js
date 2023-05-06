@@ -37,11 +37,3 @@ export const deleteProduct = createAsyncThunk(
     return id
   }
 )
-
-// export const addProductToCustomer = createAsyncThunk(
-//   'purchases/addProductToCustomer',
-//   async (productId, customerId) => {
-//     await addProductToCustomerAPI(productId, customerId);
-//     console.log(`added product ${productId} to customer ${customerId} cart`)
-//   }
-// )

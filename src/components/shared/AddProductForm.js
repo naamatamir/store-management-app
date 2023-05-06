@@ -1,17 +1,16 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { selectProducts } from '../../../features/products/productsSlice'
+import { selectProducts } from '../../features/products/productsSlice'
 import { useDispatch } from 'react-redux'
 import {
   getPurchases,
   addPurchaseToCustomer,
-} from '../../../features/purchases/purchasesThunks'
+} from '../../features/purchases/purchasesThunks'
 import { Autocomplete } from '@mui/material'
 import TextField from '@mui/material/TextField'
-import Button from '../Button'
-import Toasts from '../Toasts'
-import { showToast } from '../../../features/toasts/toastsSlice'
-import './addProductFormStyles.css'
+import Button from './Button'
+import Toasts from './Toasts'
+import { showToast } from '../../features/toasts/toastsSlice'
 
 const AddProductForm = ({ customerId }) => {
   const products = useSelector(selectProducts)
@@ -59,12 +58,27 @@ const AddProductForm = ({ customerId }) => {
           id='product-select'
           options={products}
           getOptionLabel={(option) => option.name}
-          sx={{ width: 250, margin: '0 0.5rem' }}
+          sx={{
+            width: 250,
+            margin: '0 0.5rem',
+            '.MuiInputLabel-root': {},
+            '.MuiOutlinedInput-root': {
+              paddingTop: 0,
+              height: 36.5,
+            },
+          }}
           value={selectedProduct}
           onChange={handleProductSelect}
           isOptionEqualToValue={(option, value) => option.id === value.id}
           renderInput={(params) => (
-            <TextField {...params} label='Select Product' />
+            <TextField
+              {...params}
+              InputLabelProps={{
+                shrink: true,
+                htmlFor: 'product-select',
+              }}
+              label='Select Product'
+            />
           )}
         />
       </form>

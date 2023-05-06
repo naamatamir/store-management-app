@@ -15,8 +15,6 @@ export const getCustomersAPI = async () => {
   } catch (error) {
     console.error('Error getting customers:', error)
     throw error
-    //**option instead of throw error: */
-    // return []
   }
 }
 

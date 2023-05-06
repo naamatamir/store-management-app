@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectPurchasesOfCustomer } from '../features/purchases/purchasesSlice'
-import { getPurchasesOfCustomer } from '../features/purchases/purchasesThunks'
+import { selectPurchasesOfCustomer } from '../../../features/purchases/purchasesSlice'
+import { getPurchasesOfCustomer } from '../../../features/purchases/purchasesThunks'
 import { Link } from 'react-router-dom'
-import AddProductForm from './shared/addProductForm/AddProductForm'
-import Button from './shared/Button'
+import AddProductForm from '../AddProductForm'
+import Button from '../Button'
 import { styled } from '@mui/material/styles'
 import TableRow from '@mui/material/TableRow'
-import TableCell from '@mui/material/TableCell'
+import TableCell, { tableCellClasses } from '@mui/material/TableCell'
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
@@ -20,9 +20,18 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }))
 
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+    minWidth: '100px',
+    maxWidth: '260px',
+    padding: '0',
+    paddingLeft: '16px',
+  },
+}))
+
 const CustomersTableRow = ({ customer }) => {
   const [selectedCustomerId, setSelectedCustomerId] = useState(null)
-  // const [openFormId, setOpenFormId] = useState(null)
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -46,19 +55,18 @@ const CustomersTableRow = ({ customer }) => {
 
   const showAddProductForm = (customerId) => {
     setSelectedCustomerId(customerId)
-    // setOpenFormId(customerId)
   }
 
   return (
     <StyledTableRow>
-      <TableCell>
+      <StyledTableCell>
         <Link to='#' onClick={(e) => handleCustomerClick(e, customer)}>
           {customer.firstName} {customer.lastName}
         </Link>
-      </TableCell>
-      <TableCell>
+      </StyledTableCell>
+      <StyledTableCell>
         {purchasesOfCustomer.length > 0 ? (
-          <ul>
+          <ul style={{ padding: '0' }}>
             {purchasesOfCustomer.map((product) => (
               <li key={product.id}>
                 <Link to='#' onClick={(e) => handleProductClick(e, product)}>
@@ -70,10 +78,10 @@ const CustomersTableRow = ({ customer }) => {
         ) : (
           <p>No purchases</p>
         )}
-      </TableCell>
-      <TableCell>
+      </StyledTableCell>
+      <StyledTableCell>
         {purchasesOfCustomer.length > 0 ? (
-          <ul>
+          <ul style={{ padding: '0' }}>
             {purchasesOfCustomer.map((product) => (
               <li key={product.id}>
                 {product.date &&
@@ -88,16 +96,14 @@ const CustomersTableRow = ({ customer }) => {
         ) : (
           <p>No purchases</p>
         )}
-      </TableCell>
-      <TableCell>
+      </StyledTableCell>
+      <StyledTableCell>
         {selectedCustomerId === customer.id ? (
           <AddProductForm customerId={selectedCustomerId} />
         ) : (
-          <Button onClick={() => showAddProductForm(customer.id)}>
-            Add Product
-          </Button>
+          <Button onClick={() => showAddProductForm(customer.id)}>Add</Button>
         )}
-      </TableCell>
+      </StyledTableCell>
     </StyledTableRow>
   )
 }

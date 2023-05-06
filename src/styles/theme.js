@@ -1,8 +1,5 @@
 import { createTheme } from '@mui/material'
 
-// *!look into themeOptions - only seen in typeScript examples */
-// import {themeOptions} from '@mui/material/styles/createMuiTheme';
-
 const themeOptions = {
   palette: {
     type: 'light',

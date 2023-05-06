@@ -29,10 +29,6 @@ const Card = ({
     <MuiCard variant='' className={className}>
       <CardContent style={style}>
         <Typography variant={variant} sx={{ mb: 1.5 }}>
-          {/* <Link to={link}>{title}</Link> */}
-          {/* <Link to={link} onClick={() => navigate(link)}>
-            {title}
-          </Link> */}
           {typeof link === 'string' ? (
             <Link to={link}>{title}</Link>
           ) : (
