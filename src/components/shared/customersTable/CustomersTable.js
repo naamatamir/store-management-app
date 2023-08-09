@@ -21,7 +21,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }))
 
-//** */
 const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
   // mobile
   [theme.breakpoints.down('sm')]: {
@@ -32,7 +31,6 @@ const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
     maxWidth: '1000px',
   },
 }))
-//** */
 
 const CustomersTable = () => {
   const customers = useSelector(selectCustomers)
@@ -48,7 +46,6 @@ const CustomersTable = () => {
         transition: 'all 0.3s ease-in-out',
       }}>
       <Table
-        // sx={{ minWidth: 500 }}
         aria-label='customized table'>
         <TableHead>
           <TableRow>

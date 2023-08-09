@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useParams, useNavigate } from 'react-router-dom'
-import {
-  updateProduct,
-  deleteProduct,
-} from '../features/products/productsThunks'
+import { updateProduct, deleteProduct } from '../features/products/productsThunks'
 import { deletePurchasesOfProduct } from '../features/purchases/purchasesThunks'
 import { showToast } from '../features/toasts/toastsSlice'
 import Toasts from './shared/Toasts'

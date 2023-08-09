@@ -27,7 +27,7 @@ and allows you to search, create, update, and delete these items as needed.
 1. Clone the repo
 
 ```bash
- https://github.com/Emma177/Store-Management-App.git
+https://github.com/naamatamir/store-management-app
 ```
 
 2. Install NPM packages

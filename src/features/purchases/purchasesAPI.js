@@ -1,19 +1,8 @@
 import { db } from '../../Firebase/firebaseConfig'
-import {
-  collection,
-  getDocs,
-  query,
-  where,
-  addDoc,
-  serverTimestamp,
-  writeBatch,
-} from 'firebase/firestore'
+import { collection, getDocs, query, where, addDoc, serverTimestamp, writeBatch } from 'firebase/firestore'
 import { getProductByIdAPI } from '../products/productsAPI'
 import { getCustomerByIdAPI } from '../customers/customersAPI'
-import {
-  getPurchasesByProductIdAPI,
-  getPurchasesByCustomerIdAPI,
-} from './purchasesHelperAPI'
+import { getPurchasesByProductIdAPI, getPurchasesByCustomerIdAPI } from './purchasesHelperAPI'
 
 //get all purchases
 export const getPurchasesAPI = async () => {

@@ -2,10 +2,7 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { selectProducts } from '../../features/products/productsSlice'
 import { useDispatch } from 'react-redux'
-import {
-  getPurchases,
-  addPurchaseToCustomer,
-} from '../../features/purchases/purchasesThunks'
+import { getPurchases, addPurchaseToCustomer } from '../../features/purchases/purchasesThunks'
 import { Autocomplete } from '@mui/material'
 import TextField from '@mui/material/TextField'
 import Button from './Button'

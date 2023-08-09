@@ -38,7 +38,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(even)': {
     backgroundColor: theme.palette.action.hover,
   },
-  // hide last border
   '&:last-child td, &:last-child th': {
     border: 0,
   },
@@ -48,11 +47,9 @@ const PurchasesPage = () => {
   const purchases = useSelector(selectPurchases)
 
   const products = useSelector(selectProducts)
-  // const allProducts = { id: -1, name: 'All Products' }
   const productsWithAll = [{ id: -1, name: 'All Products' }, ...products]
 
   const customers = useSelector(selectCustomers)
-  // const allCustomers = { id: -1, firstName: 'All', lastName: 'Customers' }
   const customersWithAll = [
     { id: -1, firstName: 'All', lastName: 'Customers' },
     ...customers,
@@ -89,14 +86,6 @@ const PurchasesPage = () => {
         (purchase) => purchase.customerId === selectedCustomer.id
       )
     }
-
-    // if (selectedDate instanceof Date) {
-    //   const selectedDateStr = selectedDate.toLocaleDateString('en-GB')
-    //   filteredPurchases = filteredPurchases.filter(
-    //     (purchase) => purchase.date === selectedDateStr
-    //   )
-    //   console.log("🚀 ~ file: PurchasesPage.js:66 ~ filterPurchases ~ filteredPurchases:", filteredPurchases)
-    // }
 
     if (selectedDate instanceof Date) {
       filteredPurchases = filteredPurchases.filter(
@@ -172,33 +161,6 @@ const PurchasesPage = () => {
           Search
         </Button>
         <br />
-        {/* {filteredPurchases.length > 0 && (
-          <table className='purchases-table-wrapper'>
-            <thead>
-              <tr>
-                <th>Product</th>
-                <th>Customer</th>
-                <th>Purchase Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredPurchases.map((purchase) => (
-                <tr key={purchase.id}>
-                  <td>{purchase.productName}</td>
-                  <td>{purchase.customerName}</td>
-                  <td>
-                    {purchase.date &&
-                      new Date(purchase.date).toLocaleDateString('en-GB', {
-                        day: 'numeric',
-                        month: 'numeric',
-                        year: 'numeric',
-                      })}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )} */}
 
         {filteredPurchases.length > 0 && (
           <TableContainer component={Paper}>

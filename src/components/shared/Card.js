@@ -3,18 +3,7 @@ import MuiCard from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 
-const Card = ({
-  className,
-  style,
-  variant,
-  link,
-  title,
-  label1,
-  value1,
-  label2,
-  value2,
-  children,
-}) => {
+const Card = ({ className, style, variant, link, title, label1, value1, label2, value2, children }) => {
   const navigate = useNavigate()
 
   const handleClick = (e) => {

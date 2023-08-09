@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useParams, useNavigate } from 'react-router-dom'
-import {
-  updateCustomer,
-  deleteCustomer,
-} from '../features/customers/customersThunks'
+import { updateCustomer, deleteCustomer } from '../features/customers/customersThunks'
 import { deletePurchasesOfCustomer } from '../features/purchases/purchasesThunks'
 import { showToast } from '../features/toasts/toastsSlice'
 import Toasts from './shared/Toasts'
@@ -20,7 +17,6 @@ const CustomerForm = ({ customer, purchasesOfCustomer }) => {
   const { id } = useParams()
 
   const [customerData, setCustomerData] = useState({
-    // id: '',
     firstName: '',
     lastName: '',
     city: '',
